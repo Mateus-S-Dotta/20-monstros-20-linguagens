@@ -1,0 +1,36 @@
+FROM ubuntu:24.04
+ 
+# Evita prompts interativos do apt
+ENV DEBIAN_FRONTEND=noninteractive
+ 
+# Toolchain completo para dev em Assembly puro (x86-64, syscalls Linux diretas):
+# - nasm       : assembler
+# - binutils   : ld, objdump, readelf, nm, strip...
+# - gdb        : debugger
+# - strace     : rastrear syscalls em tempo real (essencial pro seu caso)
+# - ltrace     : idem, mas pra chamadas de lib (útil se um dia usar libc)
+# - make       : automação do build
+# - xxd/hexdump: inspecionar bytecode/binários
+# - gdbgui / peda opcional (deixei de fora pra manter a imagem leve)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    nasm \
+    binutils \
+    gdb \
+    strace \
+    ltrace \
+    make \
+    xxd \
+    bsdmainutils \
+    file \
+    vim \
+    less \
+    && rm -rf /var/lib/apt/lists/*
+ 
+WORKDIR /app
+ 
+# O código-fonte é montado via volume no docker-compose (ou docker run -v),
+# então não copiamos nada aqui — mantém o container sempre sincronizado
+# com o que você edita no host.
+ 
+CMD ["/bin/bash"]
+ 
