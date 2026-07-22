@@ -39,7 +39,7 @@ Cada `Dockerfile` builda um ambiente isolado com a linguagem, suas dependências
  
 | # | Linguagem | Projeto | Dias | O monstro | Status |
 |---|-----------|---------|:----:|-----------|:------:|
-| 1 | **Assembly** | Interpretador de uma mini-VM de pilha (bytecode próprio) rodando em NASM puro, com syscalls de I/O | 2-3 | Sem abstração nenhuma entre você e o processador | 🔲 Não iniciado |
+| 1 | **Assembly** | Interpretador de uma mini-VM de pilha (bytecode próprio) rodando em NASM puro, com syscalls de I/O | 2-3 | Sem abstração nenhuma entre você e o processador | 🟡	Em andamento |
 | 2 | **Fortran** | Solver de sistema linear (Gauss-Jordan) + leitura de matriz de arquivo + benchmark contra versão ingênua | 1-2 | Programação numérica, arrays, performance | 🔲 Não iniciado |
 | 3 | **Lisp** | Interpretador de uma linguagem Lisp minúscula (meta-circular evaluator), com variáveis e funções | 2-3 | Código-como-dado, recursão, ambientes léxicos | 🔲 Não iniciado |
 | 4 | **COBOL** | Sistema de folha de pagamento: ler funcionários de arquivo fixo, calcular impostos por faixa, gerar relatório formatado | 1-2 | Verbosidade + PICTURE + estruturas de dados fixas | 🔲 Não iniciado |
