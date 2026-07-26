@@ -20,6 +20,18 @@ bytecode:
 
     db 0x02         ; REMOVE   -> só 1 elemento, no-op
 
+    db 0x01, 10     ; PUSH 10
+
+    db 0x04         ; SUB
+
+    db 0x01, 2      ; PUSH 10
+
+    db 0x05         ; MUL
+
+    db 0x01, 2      ; PUSH 10
+
+    db 0x06         ; DIV
+
     db 0xFF         ; HALT
 
 bytecode_len equ $ - bytecode
