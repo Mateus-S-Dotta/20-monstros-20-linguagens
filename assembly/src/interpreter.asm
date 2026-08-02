@@ -25,9 +25,26 @@ vm_run:
     push r12          ; r12 = instruction pointer (IP), offset dentro de bytecode
     push r13          ; r13 = endereço final do bytecode (limite)
 
+    ; o push copia o valor que estava no REGISTRADOR para a stack
+    ; (antes do push, esse valor só existia no registrador r12/r13)
+    ; como minha função sobescreve o r12 e r13,
+    ; eu vou salvar esses valores antes de seguir
+    ; e no final posso resgatar com pop
+
     lea r12, [bytecode]
     lea r13, [bytecode]
     add r13, bytecode_len
+
+    ; pop r13 (como é uma stack, é em ordem invertida last in, first out)
+    ; pop r12 o valor que eu salvei na linha 'push r12' volta para r12
+    ; assim, a minha função chamada tem a segurança que os valores se mantem,
+    ; e que nenhum outro trecho de código sobescreveu o valor
+
+    ; poderia ter um ret, para voltar o RIP para a função anterior
+    ; ret
+
+    ; o pop e o ret (e o proprio push) podem ser ignorados aqui
+    ; pois essa função tem um exit
 
 .fetch:
     cmp r12, r13
