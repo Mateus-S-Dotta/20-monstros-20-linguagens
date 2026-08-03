@@ -19,7 +19,7 @@ section .bss ; tudo em .bss começa zerado, o SO garante isso para a gente
     ; resq é como se fosse uma 'reserva da bss', quase o que o malloc é para a heap
     ; vai reservar a qunatidade * 8
     ; lembrando: o bss é preparada antes de executar o arquivo. não acontece em tempo de execução como na heap
-section .text
+section .text ; vale lembrar, o ponteiro do .text é RIP
 
 ; ------------------------------------------
 ; vm_push: empilha um valor de 64 bits
@@ -39,7 +39,7 @@ vm_push:
 
     inc rbx                     ; incrementa RBX (que é uma CÓPIA do índice) — [stack_top] na memória ainda não mudou
     mov [stack_top], rbx        ; vou salvar [stack-top]
-    ret                         ; vou retornar
+    ret                         ; volto o ponteiro do .text (RIP)
     ; Comentário importante: aqui, eu corrompi RBX e RCX (como no comentário do topo)
     ; Para salvar esses valores, eu teria que ter dado PUSH / POP
 
@@ -59,7 +59,7 @@ vm_pop:
     mov rax, [vm_stack + rcx]   ; coloco esse valor do topo em rax, para retornar
     mov [stack_top], rbx        ; salva o novo valor de [stack_top]. só isso já é suficiente para retirar o elemento do topo da lista
     ; Basta dizer que a lista tem 1 elemento a menos, no próximo push vou sobrescrever o valor
-    ret                         ; volto o ponteiro do .text
+    ret                         ; volto o ponteiro do .text (RIP)
     ; Aqui, o mesmo vale de PUSH / POP
 
 ; ------------------------------------------

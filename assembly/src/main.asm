@@ -1,6 +1,6 @@
 extern vm_run
 
-section .text
+section .text ; vale lembrar, o ponteiro do .text é RIP
 global _start
 _start:
     ; Caso eu quisesse colocar parametros em VM_RUN

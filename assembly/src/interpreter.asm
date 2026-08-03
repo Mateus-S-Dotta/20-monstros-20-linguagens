@@ -15,7 +15,7 @@ extern vm_print_stack
 extern bytecode
 extern bytecode_len
 
-section .text
+section .text ; vale lembrar, o ponteiro do .text é RIP
 
 ; ------------------------------------------
 ; vm_run: executa o bytecode do início ao fim
