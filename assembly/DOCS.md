@@ -23,3 +23,10 @@ dec | decrementa 1
 shl | move todos os bits a esquerda, no valor que receber como segundo 'parametro'
 push | salva o valor do argumento em uma pilha (salva na stack mesmo)
 pop | resgata os valores salvos por push (na ordem inversa, pois é uma pilha)
+
+Os registradores "especiais": eles apontam para lugares especicos de arrays especificos
+RIP:     ponteiro do .text (próxima instrução a executar)
+RSP:     ponteiro pro topo da stack (Stack Pointer)
+RBP:     ponteiro pro início do frame da função atual na stack (Base Pointer)
+RFLAGS:  guarda os bits de resultado de comparações (não é bem um "ponteiro", 
+         é um registrador de flags/bits de status)
