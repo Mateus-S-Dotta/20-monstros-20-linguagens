@@ -64,7 +64,7 @@ vm_remove_first:
 vm_add:
     CHECK_MIN_TWO .skip
     call vm_pop
-    push rax        ; guarda b na pilha NATIVA do x86 (não na vm_stack!)
+    push rax         ; guarda b na pilha NATIVA do x86 (não na vm_stack!)
     call vm_pop      ; rax = a
     pop rbx          ; recupera b
     add rax, rbx     ; rax = a + b
