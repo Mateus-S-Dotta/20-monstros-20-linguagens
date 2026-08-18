@@ -10,6 +10,7 @@ Interpretador de uma mini-VM baseada em pilha, com bytecode próprio, escrito em
 
 A VM é composta por três partes:
 
+
 - **Pilha (`vm_stack`)**: array fixo de 4096 células de 64 bits, com um contador (`stack_top`) indicando quantos elementos estão ocupados. Não é a pilha nativa do processador (`RSP`) — é uma região de memória própria, controlada manualmente.
 
 - **Bytecode (`bytecode`)**: programa da VM, escrito como uma sequência de bytes (`db`) em `.data`. É dado estático — só ganha efeito quando o interpretador o executa.
