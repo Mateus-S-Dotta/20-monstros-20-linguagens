@@ -12,7 +12,7 @@ section .bss
     print_buf:   resb 8192
     tmp_digits:  resb 32
 
-section .text
+section .text ; vale lembrar, o ponteiro do .text é RIP
 
 ; ------------------------------------------
 ; vm_print_stack: imprime a pilha no formato "n, n, n\n"
