@@ -85,7 +85,6 @@ Detalhes específicos (flags, volumes, portas expostas etc.) ficam no `README.md
  
 ## Por que esse formato
  
-- **1 a 3 dias por linguagem**: curto o suficiente pra não virar procrastinação eterna, longo o suficiente pra sentir a dor de verdade do paradigma, não só ler sobre ele.
 - **Um "monstro" por projeto**: cada projeto é desenhado ao redor da característica mais assustadora da linguagem, de propósito. Não dá pra "aprender Haskell" evitando monads, nem pra "aprender Rust" evitando o borrow checker. Melhor encarar de cara.
 - **Docker em tudo**: elimina a fricção de "não consigo nem instalar o compilador" — o único monstro que interessa é o da linguagem, não o do ambiente.
 - **Ordem quase cronológica**: dá pra sentir a evolução das ideias — de Assembly sem abstração nenhuma até Rust e Zig tentando resolver, décadas depois, os mesmos problemas de memória que C expôs lá atrás.
