@@ -1,3 +1,5 @@
+------------
+
 Em Assembly, existem 'tipos' de memoria /operando (quem sofre operações), sendo algumas delas (existe mais que essas 4, mas não importa agora):
 r -> registrador, apenas os registradores oficiais
 imm -> valor imediato, número ou variável fora dos []. é o valor, cravado dentro da própria instrução (sem acessar RAM)
@@ -9,6 +11,7 @@ Cada instrução aceita um ou mais tipos.
 Detalhe super legal: todos os processos brigam pela memoria, principalmente registradores.
 Porém, o Kernel decide qual processo roda agora. Algo como: sua vez de brincar. Coloca todos os brinquedos de volta no lugar, e o processo segue normalmente.
 
+--------------
 Lista de minemonicos:
 
 cmp | Compara valores
@@ -23,10 +26,35 @@ dec | decrementa 1
 shl | move todos os bits a esquerda, no valor que receber como segundo 'parametro'
 push | salva o valor do argumento em uma pilha (salva na stack mesmo)
 pop | resgata os valores salvos por push (na ordem inversa, pois é uma pilha)
+lea | calcula o valor do ponteiro e salva
 
+---------------
 Os registradores "especiais": eles apontam para lugares especicos de arrays especificos
 RIP:     ponteiro do .text (próxima instrução a executar)
 RSP:     ponteiro pro topo da stack (Stack Pointer)
 RBP:     ponteiro pro início do frame da função atual na stack (Base Pointer)
 RFLAGS:  guarda os bits de resultado de comparações (não é bem um "ponteiro", 
          é um registrador de flags/bits de status)
+
+--------------
+No x86-64, cada registrador de propósito geral possui nomes para acessar seus 32, 16 ou 8 bits inferiores.
+
+Esses nomes representam partes do mesmo registrador, não registradores independentes. “Bits inferiores” são os bits de menor peso numérico, independentemente do valor armazenado.
+
+Por exemplo, se RAX contém `0x0000000000000001`:
+
+| Nome | Parte acessada | Valor lido |
+|---|---|---|
+| RAX | Todos os 64 bits | `0x0000000000000001` |
+| EAX | 32 bits inferiores | `0x00000001` |
+| AX | 16 bits inferiores | `0x0001` |
+| AL | 8 bits inferiores | `0x01` |
+
+Ao escrever nessas partes:
+
+- Escrever em AL ou AX altera apenas essa parte, preservando os demais bits.
+- Escrever em EAX altera os 32 bits inferiores e zera os 32 bits superiores de RAX.
+- Escrever em RAX altera os 64 bits.
+
+
+------------
